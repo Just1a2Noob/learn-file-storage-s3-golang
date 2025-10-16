@@ -1,0 +1,31 @@
+meta {
+  name: Login user
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8091/api/login
+  body: json
+  auth: bearer
+}
+
+body:json {
+  {
+    "email": "admin@tubely.com",
+    "password": "password"
+  }
+}
+
+vars:post-response {
+  token: res.body.token
+}
+
+assert {
+  res.status: eq 200
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
