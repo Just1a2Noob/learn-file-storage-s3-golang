@@ -14,6 +14,10 @@ headers {
   Authorization: Bearer {{token}}
 }
 
+vars:post-response {
+  thumbnailURL: res.body[0].thumbnail_url
+}
+
 assert {
   res.status: eq 200
 }

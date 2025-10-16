@@ -1,0 +1,24 @@
+meta {
+  name: Get Thumbnail
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{thumbnailURL}}
+  body: none
+  auth: inherit
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+assert {
+  res.headers['cache-control']: eq no-store
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
